@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href='/static/home.css'/>
+
+    <title>NGame</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light bg-light">
+<!--        <a class="navbar-brand" href="#">Наше приложение</a> logo here-->
+        {% if current_user.is_authenticated %}
+<!--            <a class="navbar-brand" href="/logout">{{ current_user.name }}</a> avatar logo custom here-->
+        {% else %}
+
+            <a href="/register"><img src="/static/images/avatar_icon.com.png" alt="Профиль" class="avatar"></a>
+        {% endif %}
+    </nav>
+</header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

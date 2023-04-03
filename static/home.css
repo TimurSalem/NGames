@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+body{
+    background-color: rgb(30, 30, 30)
+}
+
+h1 {
+    color: rgb(180, 180, 180);
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    color: rgb(180, 180, 180);
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    position: relative;
+    left: 25%;
+    font-size: 20px;
+
+}
+.registrate_button{
+    /*background: rgb(100, 100, 200);*/
+    text-align: center;
+    width: 50%;
+}
+
+.registrate_lable{
+    text-align: center;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    text-decoration: None;
+}
+
+input {
+    color: rgb(200, 200, 200);
+    background: rgb(45, 45, 45);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 16px;
+    width: 50%;
+    height: 37px;
+    border: 10px wheat;
+    padding-left: 12px;
+    padding-right: 12px;
+    outline: none;
+    top: 10px;
+    font-size: 20px;
+    position: relative;
+}
+
+.search{
+    left: 320px;
+    top: 24px;
+    font-size: 20px;
+    position: absolute;
+    padding-left: 45px;
+    padding-right: 12px;
+
+
+}
+
+#search_icon{
+    left: 330px;
+    top: 31px;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+
+}
+
+.choose {
+    background: rgb(35, 35, 35);
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    width: 200px;
+    height: 100vh;
+}
+
+.groups {
+    padding-left: 20px;
+    padding-top: 15px;
+    position: absolute;
+    color: rgb(200, 200, 200);
+
+}
+
+.bibl{
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    height: 50px;
+    width: 180px;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+
+.glav{
+    position: absolute;
+
+    left: 10px;
+    top: 50px;
+    height: 50px;
+    width: 180px;
+
+    border-radius: 5px;
+
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+
+.bibl:hover{
+    background: rgb(50, 50, 50);
+}
+.glav:hover{
+    background: rgb(50, 50, 50);
+}
+
+.avatar{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    height: 48px;
+    width: 48px;
+}
+
+.renember_me{
+    text-align: left;
+    background: yellow;
+}
