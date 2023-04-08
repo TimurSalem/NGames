@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{game.name}}</title>
+    <link rel="stylesheet" href='/static/home.css'/>
+
+</head>
+<body class="game_page">
+    <div class="left_game_content">
+
+        <h1 class="game_title"> {{game.name}} </h1>
+        <img src="{{ game.fullpreview }}" class="fon">
+        <div class="vign"></div>
+
+        <img src="{{ game.fullpreview }}" class="fullpreview">
+    </div>
+    <div class="characteristics">
+        <h2 class="age_limit">{{game.age_limit}}</h2>
+        <button class="game_price"> {{game.price}} </button>
+
+    </div>
+
+</body>
+</html>

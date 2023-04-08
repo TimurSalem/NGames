@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto_Medium:wght@500&display=swap');
 
-body{
+@import url('https://fonts.googleapis.com/css2?family=Roboto_Bold:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto_Superbold:wght@900&display=swap');
+
+
+
+body {
     background-color: rgb(30, 30, 30)
 }
 
 h1 {
     color: rgb(180, 180, 180);
     font-family: 'Roboto', sans-serif;
+    font-size: 25px;
 }
 
 p {
@@ -19,13 +26,14 @@ p {
     font-size: 20px;
 
 }
-.registrate_button{
+
+.registrate_button {
     /*background: rgb(100, 100, 200);*/
     text-align: center;
     width: 50%;
 }
 
-.registrate_lable{
+.registrate_lable {
     text-align: center;
 }
 
@@ -50,7 +58,21 @@ input {
     position: relative;
 }
 
-.search{
+.search {
+    color: rgb(200, 200, 200);
+    background: rgba(55, 55, 55, 0.7);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 16px;
+    width: 50%;
+    height: 37px;
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    padding-left: 12px;
+    padding-right: 12px;
+    outline: none;
+    top: 10px;
+    font-size: 20px;
+    box-shadow: 0 0 15px rgba(200, 200, 200, 0.06);
+
     left: 320px;
     top: 24px;
     font-size: 20px;
@@ -58,15 +80,20 @@ input {
     padding-left: 45px;
     padding-right: 12px;
 
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    position: fixed;
+
 
 }
 
-#search_icon{
+#search_icon {
     left: 330px;
-    top: 31px;
-    position: absolute;
+    top: 32px;
     width: 22px;
     height: 22px;
+    position: fixed;
 
 }
 
@@ -74,9 +101,14 @@ input {
     background: rgb(35, 35, 35);
     left: 0px;
     top: 0px;
-    position: absolute;
+    position: fixed; /* Set the navbar to fixed position */
     width: 200px;
     height: 100vh;
+    overflow: hidden;
+    display: block;
+    font-size: 20px;
+
+
 }
 
 .groups {
@@ -87,7 +119,7 @@ input {
 
 }
 
-.bibl{
+.bibl {
     position: absolute;
     left: 10px;
     top: 100px;
@@ -99,7 +131,7 @@ input {
 
 }
 
-.glav{
+.glav {
     position: absolute;
 
     left: 10px;
@@ -114,14 +146,15 @@ input {
 
 }
 
-.bibl:hover{
-    background: rgb(50, 50, 50);
-}
-.glav:hover{
+.bibl:hover {
     background: rgb(50, 50, 50);
 }
 
-.avatar{
+.glav:hover {
+    background: rgb(50, 50, 50);
+}
+
+.avatar {
     position: absolute;
     right: 20px;
     top: 15px;
@@ -129,7 +162,160 @@ input {
     width: 48px;
 }
 
-.renember_me{
+.remember_me {
     text-align: left;
-    background: yellow;
+}
+
+.game_preview {
+    width: 230px;
+    height: 345px;
+    border-radius: 16px;
+
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.game_preview:hover {
+    width: 253px;
+    height: 380px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
+
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    margin-left: 200px;
+    margin-top: 100px;
+}
+
+.col-3 {
+    flex: 0 0 20%;
+    max-width: 22%;
+    padding: 10px 10px;
+
+}
+
+.fon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: blur(100px);
+    z-index: -1;
+
+    background: radial-gradient(ellipse closest-side at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    -webkit-mask-image: radial-gradient(ellipse closest-side at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+    mask-image: radial-gradient(ellipse closest-side at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+
+}
+
+.fullpreview {
+    max-width: 60%;
+    max-height: 60%;
+    -width: auto;
+    height: auto;
+    border-radius: 10px;
+
+    /*filter: blur(10px);*/
+    display: block;
+
+    box-shadow: 0 5px 40px rgba(0, 0, 0, 0.7);
+
+
+
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1; /* устанавливаем поверх изображения */
+
+}
+
+.characteristics {
+    color: rgb(200, 200, 200);
+    background: rgba(55, 55, 55, 0.7);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 16px;
+    width: 300px;
+    height: 97vh;
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    outline: none;
+    top: 12px;
+    font-size: 20px;
+    box-shadow: 0 0 5px rgba(200, 200, 200, 0.05);
+
+    right: 10px;
+    padding-left: 45px;
+    padding-right: 12px;
+
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    position: absolute;
+
+
+
+}
+
+.left_game_content{
+    margin-left: 45px;
+}
+
+.vign {
+    position: fixed;
+    display: block;
+
+
+    top: -300px;
+    right: 0;
+    bottom: 0;
+    left: -500px;
+    /*filter: blur(10px);*/
+
+    background: radial-gradient(circle closest-side at center, rgba(0, 0, 0, 0.3) 0%, rgba(30, 30, 30, 0.85) 100%);
+    height: 150vh; /* устанавливаем высоту равной высоте окна просмотра */
+    margin: 0; /* убираем отступы */
+    padding: 0; /* убираем отступы */
+    z-index: -1; /* устанавливаем поверх изображения */
+
+}
+
+.game_page{
+
+    overflow-x: hidden;
+
+}
+
+.game_title {
+    font-family: 'Roboto_Medium', sans-serif;
+
+    color: rgba(250, 250, 250, 0.9);
+    font-size: 50px;
+    margin-bottom: 15px;
+    margin-left: -10px;
+
+}
+
+.game_price{
+  background: #328cff;
+  border-radius: 10px;
+  width: 200px;
+  height: 40px;
+  outline: none;
+  font-family: 'Roboto_Superbold', sans-serif;
+  font-size: 20px;
+  color: rgb(222, 222, 222);
+  border: None;
+
+  /* Добавляем следующие свойства */
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translate(-50%, -50%);
+
 }

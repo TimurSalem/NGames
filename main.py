@@ -6,17 +6,62 @@ import datetime
 from forms.user import RegisterForm, LoginForm
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_restful import reqparse, abort, Api, Resource
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/timursalem/PycharmProjects/NGame/db/NGames.db'
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+
+db = SQLAlchemy(app)
 api = Api(app)
 
 
+class Game(db.Model):
+    __tablename__ = 'games'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    preview = db.Column(db.String(200))
+    fullpreview = db.Column(db.String(200))
+    price = db.Column(db.Integer)
+    famous = db.Column(db.Integer)
+    age_limit = db.Column(db.Integer)
+    link = db.Column(db.String(50))
+
+
+def generate_single_game_html(game):
+    return render_template("games_html/basic_game.html", game=game)
+
+
+def generate_game_html():
+    with app.app_context():
+        games = Game.query.all()
+
+        for game in games:
+            html = generate_single_game_html(game)
+
+            with open(f"templates/games_html/{game.name.lower().replace(' ', '_')}.html", "w") as f:
+                f.write(html)
+
+
+generate_game_html()
+
+with app.app_context():
+    games = Game.query.all()
+
+    for game in games:
+        exec(f'def game_{str(game.name).replace(" ", "_")}():\n    return render_template("games_html/{str(game.name).lower().replace(" ", "_")}.html", game=game)')
+        app.route(f'/{str(game.name).lower().replace(" ", "_")}')(eval(f'game_{str(game.name).replace(" ", "_")}'))
+
 @app.route('/')
 def home():
-    return render_template("home.html")
+    games = Game.query.all()
+
+    return render_template("home.html", games=games)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -55,14 +100,16 @@ def reqister():
         user = User(
             name=form.name.data,
             email=form.email.data,
-            about=form.about.data
+            icon=form.icon.data,
         )
         user.set_password(form.password.data)
         db_sess.add(user)
+        print(1)
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    db_session.global_init("db/users.db")
+    app.run(host='0.0.0.0', port=9990, debug=True)

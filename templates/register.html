@@ -41,6 +41,16 @@
         {% endfor %}
     </p>
 
+    <p>
+        {{ form.icon.file }}<br>
+        {{ form.icon(class="form-control", type="file") }}<br><br>
+        {% for error in form.password_again.errors %}
+            <p class="alert alert-danger" role="alert">
+                {{ error }}
+            </p>
+        {% endfor %}
+    </p>
+
     <p class="registrate_button">{{ form.submit(type="submit", class="btn btn-primary")}}</p>
     {{message}}
 </form>
