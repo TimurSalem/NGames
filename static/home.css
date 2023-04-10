@@ -57,7 +57,7 @@ input {
 
 .search {
     color: rgb(200, 200, 200);
-    background: rgba(55, 55, 55, 0.55);
+    background: rgba(55, 55, 55, 0.58);
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
     width: 50%;
@@ -77,8 +77,8 @@ input {
     padding-left: 45px;
     padding-right: 12px;
 
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 
     position: fixed;
 
