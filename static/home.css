@@ -1,11 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto_Medium:wght@500&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto_Bold:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto_Superbold:wght@900&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
 
 body {
     background-color: rgb(30, 30, 30)
@@ -40,6 +35,8 @@ p {
 a {
     font-family: 'Roboto', sans-serif;
     text-decoration: None;
+    color: rgb(200, 200, 200);
+
 }
 
 input {
@@ -60,7 +57,7 @@ input {
 
 .search {
     color: rgb(200, 200, 200);
-    background: rgba(55, 55, 55, 0.7);
+    background: rgba(55, 55, 55, 0.55);
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
     width: 50%;
@@ -80,8 +77,8 @@ input {
     padding-left: 45px;
     padding-right: 12px;
 
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
 
     position: fixed;
 
@@ -154,12 +151,27 @@ input {
     background: rgb(50, 50, 50);
 }
 
-.avatar {
+.stndart_avatar {
     position: absolute;
     right: 20px;
     top: 15px;
     height: 48px;
     width: 48px;
+}
+
+.avatar{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    height: 48px;
+    width: 48px;
+}
+
+.avatar_image{
+    height: 48px;
+    width: 48px;
+    border-radius: 8px;
+
 }
 
 .remember_me {
@@ -217,6 +229,7 @@ input {
 }
 
 .fullpreview {
+
     max-width: 60%;
     max-height: 60%;
     -width: auto;
@@ -238,7 +251,7 @@ input {
 
 .characteristics {
     color: rgb(200, 200, 200);
-    background: rgba(55, 55, 55, 0.7);
+    background: rgba(55, 55, 55, 0.5);
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
     width: 300px;
@@ -254,7 +267,7 @@ input {
     padding-right: 12px;
 
     -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
 
     position: absolute;
 
@@ -292,7 +305,7 @@ input {
 }
 
 .game_title {
-    font-family: 'Roboto_Medium', sans-serif;
+    font-family: 'Roboto', sans-serif;
 
     color: rgba(250, 250, 250, 0.9);
     font-size: 50px;
@@ -302,20 +315,171 @@ input {
 }
 
 .game_price{
-  background: #328cff;
-  border-radius: 10px;
-  width: 200px;
-  height: 40px;
-  outline: none;
-  font-family: 'Roboto_Superbold', sans-serif;
-  font-size: 20px;
-  color: rgb(222, 222, 222);
-  border: None;
+    background: #328cff;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
 
-  /* Добавляем следующие свойства */
-  position: absolute;
-  left: 50%;
-  bottom: 5px;
-  transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: rgb(222, 222, 222);
+    border: None;
 
+    /* Добавляем следующие свойства */
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translate(-50%, -50%);
+
+}
+
+.description{
+    color: rgb(200, 200, 200);
+    background: rgba(55, 55, 55, 0.7);
+    font-family: 'Manrope', sans-serif;
+    border-radius: 16px;
+    width: 740px;
+    border: 1px solid rgba(150, 150, 150, 0.3);
+    outline: none;
+    font-size: 11px;
+    margin-top: 30px;
+    padding-top: 10px;
+    box-shadow: 0 0 5px rgba(200, 200, 200, 0.05);
+
+    left: 52px;
+    padding-left: 45px;
+    padding-right: 32px;
+
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    position: absolute;
+
+}
+
+.des_light{
+    margin-top: 50px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    opacity: 0.8;
+
+}
+
+.release_date{
+    font-size: 22px;
+    margin-top: -5px;
+}
+
+.age_limit{
+    font-size: 30px;
+
+}
+
+/*.col-3{*/
+/*    margin-top: 50px;*/
+/*}*/
+
+.search_content{
+    margin-top: 100px;
+    margin-left: 300px
+
+}
+
+.form-control-file{
+    /*padding-top: 10px;*/
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.serach_h1{
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 38px;
+}
+
+.btn{
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    font-size: 20px;
+    width: 20%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: None;
+    background: #328cff;
+    color: rgb(222, 222, 222);
+
+}
+
+.register_page{
+    overflow-x: hidden;
+
+}
+
+.reg_label{
+    font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(222, 222, 222);
+
+}
+
+/*#logo{*/
+/*    position: absolute;*/
+/*    left: 20px;*/
+/*    top: 10px;*/
+/*    height: 48px;*/
+/*    width: 48px;*/
+/*}*/
+
+.remember_me{
+    position: absolute;
+    left: 40px;
+    top: 19px;
+
+}
+
+.btn_login{
+    position: absolute;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    width: 20%;
+    height: 30px;
+    top: 30px;
+    left: 15%;
+    border-radius: 8px;
+    border: None;
+    background: #328cff;
+    color: rgb(222, 222, 222);
+
+}
+
+.reg-log_link{
+    margin-top: 125px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.reg-log_link a{
+    opacity: 0.8;
+    color: #328cff;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.main_link{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    opacity: 0.8;
+    color: #328cff;
 }

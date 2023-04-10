@@ -8,12 +8,18 @@
 </head>
 <body>
 
-    <input type="text" class="search"> </input>
+    <input type="text" class="search" onkeypress="handleKeyPress(event)"></input>
+
+
     <img src="/static/images/search_icon.png" id="search_icon"/>
 
     <div class="choose">
+
+<!--        <img src="/static/images/ngames_logo.png" id="logo"/>-->
+
+
         <div class="glav">
-            <a class="groups"> Главная </a>
+            <a  href="/" class="groups"> Главная </a>
         </div>
         <div class="bibl">
             <a class="groups"> Библиотека </a>
@@ -21,16 +27,39 @@
 
     </div>
 
-    <a href="/register"><img src="/static/images/avatar_icon.com.png" alt="Профиль" class="avatar"></a>
+    {% if current_user.is_authenticated %}
+        <a href="/register" class="avatar"><img src="{{ current_user.profile_image }}" class="avatar_image"></a>
+    {% else %}
 
+        <a href="/register"><img src="/static/images/avatar_icon.com.png" alt="Профиль" class="stndart_avatar"></a>
+    {% endif %}
+
+    {% block content %}
     <div class="row">
         {% for game in games %}
-          <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-              <a href="{{ game.link }}"><img src="{{ game.preview }}" alt="{{ game.name }}" class="game_preview"></a>
-              <a href="{{ game.link }}"><h1>{{ game.name }}</h1></a>
-          </div>
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                <a href="{{ game.link }}"><img src="{{ game.preview }}" alt="{{ game.name }}" class="game_preview"></a>
+                <a href="{{ game.link }}"><h1>{{ game.name }}</h1></a>
+            </div>
         {% endfor %}
     </div>
+
+    {% endblock %}
+
+    <script>
+        function handleKeyPress(event) {
+            if (event.keyCode === 13) {
+                // осуществляем поиск
+                const searchValue = document.querySelector('.search').value;
+                if (searchValue.trim() !== "") { // проверяем, что строка не пустая
+
+                    const searchUrl = `/search?q=${searchValue}`;
+                    window.location.href = searchUrl;
+
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>

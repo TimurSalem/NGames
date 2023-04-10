@@ -1,12 +1,9 @@
 import datetime
 import sqlalchemy
-# from sqlalchemy_imageattach.entity import Image, image_attachment
-
-from data.db_session import SqlAlchemyBase
-from sqlalchemy import orm
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy_serializer import SerializerMixin
+from .db_session import SqlAlchemyBase
 
 
 class User(SqlAlchemyBase, UserMixin, SerializerMixin):
@@ -18,14 +15,12 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     email = sqlalchemy.Column(sqlalchemy.String,
                               index=True, unique=True, nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
-
-    icon = sqlalchemy.Column(sqlalchemy.LargeBinary, nullable=True)
+    profile_image = sqlalchemy.Column(sqlalchemy.String, nullable=True)
 
     def __repr__(self):
-        return f'<User> {self.id} {self.name} {self.email} {self.icon}'
+        return f'<User> {self.id} {self.name} {self.email}'
 
     def set_password(self, password):
         self.hashed_password = generate_password_hash(password)
