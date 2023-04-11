@@ -1,0 +1,12 @@
+SQLAlchemy~=2.0.8
+Werkzeug~=2.2.3
+WTForms~=3.0.1
+Flask~=2.2.3
+flask_uploads
+flask_sqlalchemy
+flask_restful
+flask_login
+sqlite3
+sqlalchemy_serializer
+flask_wtf
+wtforms
