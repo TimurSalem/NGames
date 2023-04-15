@@ -11,6 +11,8 @@ from flask_restful import reqparse, abort, Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 
+import pickle
+
 
 from werkzeug.utils import secure_filename
 
@@ -140,6 +142,81 @@ def reqister():
             db_sess.commit()
             return redirect('/login')
         return render_template('register.html', title='Регистрация', form=form)
+
+
+@app.route('/buy')
+def buy():
+    arg = request.args.get('game')
+
+    conn = sqlite3.connect('db/NGames.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM games WHERE id = ?", (arg,))
+
+    game = c.fetchone()
+
+    return render_template('buy.html', title='Покупка', game=game)
+
+
+@app.route('/transaction_processing')
+def transaction_processing():
+    arg = request.args.get('game')
+
+    conn = sqlite3.connect('db/NGames.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM games WHERE id = ?", (arg,))
+
+    game = c.fetchone()
+
+    conn = sqlite3.connect('db/users.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
+    try:
+        purchased_games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
+
+    except:
+        purchased_games = []
+    print('до', purchased_games)
+    purchased_games.append(game)
+    print('после', purchased_games)
+
+    purchased_games = pickle.dumps(purchased_games)
+    # Выполнение SQL-запроса для изменения значения поля library
+    cursor.execute("UPDATE users SET library = ? WHERE id = ?", (purchased_games, current_user.id))
+
+    # Применение изменений
+    conn.commit()
+
+    # Закрытие соединения
+    conn.close()
+
+    return redirect('/')
+
+    return "success"
+
+
+@app.route('/library')
+def library():
+
+    conn = sqlite3.connect('db/users.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
+
+    try:
+        games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
+    except:
+        games = []
+
+    print('library', games)
+
+    # Применение изменений
+    conn.commit()
+
+    # Закрытие соединения
+    conn.close()
+
+    return render_template('library.html', title='Библиотека', games=games)
 
 
 if __name__ == '__main__':

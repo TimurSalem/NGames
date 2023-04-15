@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{game.name}}</title>
+    <link rel="stylesheet" href='/static/home.css'/>
+
+</head>
+<body class="buy_page">
+  {% if current_user.is_authenticated %}
+      <a href="/register" class="avatar"><img src="{{ current_user.profile_image }}" class="avatar_image"></a>
+  {% else %}
+
+      <a href="/register"><img src="/static/images/avatar_icon.com.png" alt="Профиль" class="stndart_avatar"></a>
+  {% endif %}
+
+  <a href="/" class="main_link">< Главная</a>
+
+    <div class="buy_div">
+      <h2>Вы хотите купить игру {{game[0]}}</h2>
+
+      <img class="buy_img" src="{{game[2]}}">
+      <h2 class="buy_text">{{game[0]}}</h2>
+      <button class="buy_button" onclick="window.location.href='/transaction_processing?game={{game[7]}}'">{{game[3]}}</button>
+    </div>
+
+</body>
+</html>
+
