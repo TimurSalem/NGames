@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>NGame</title>
     <link rel="stylesheet" href='/static/home.css'/>
+    
 
 </head>
-<body>
+<body class="home">
 
     <input type="text" class="search" onkeypress="handleKeyPress(event)"></input>
 
@@ -28,7 +29,7 @@
     </div>
 
     {% if current_user.is_authenticated %}
-        <a href="/register" class="avatar"><img src="{{ current_user.profile_image }}" class="avatar_image"></a>
+        <a href="/profile" class="avatar"><img src="{{ current_user.profile_image }}" class="avatar_image"></a>
     {% else %}
 
         <a href="/register"><img src="/static/images/avatar_icon.com.png" alt="Профиль" class="stndart_avatar"></a>

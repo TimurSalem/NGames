@@ -13,7 +13,6 @@ from flask_uploads import UploadSet, IMAGES, configure_uploads
 
 import pickle
 
-
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
@@ -197,7 +196,6 @@ def transaction_processing():
 
 @app.route('/library')
 def library():
-
     conn = sqlite3.connect('db/users.db')
     cursor = conn.cursor()
 
@@ -219,6 +217,15 @@ def library():
     return render_template('library.html', title='Библиотека', games=games)
 
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
+
 if __name__ == '__main__':
     db_session.global_init("db/users.db")
-    app.run(host='0.0.0.0', port=8888, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)

@@ -573,3 +573,85 @@ h2{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.buy_page{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    /*background-attachment: fixed;*/
+    /*background-repeat: no-repeat;*/
+    /*background: linear-gradient(to right, red, black);*/
+    /*background-size: 400% 400%;*/
+    /*animation: gradient 20s ease infinite;*/
+}
+
+/*@keyframes gradient {*/
+/*    0% {*/
+/*        background-position: 0 50%;*/
+/*    }*/
+/*    50% {*/
+/*        background-position: 100% 50%;*/
+/*    }*/
+/*    100% {*/
+/*        background-position: 0 50%;*/
+/*    }*/
+/*}*/
+
+.profile_avatar{
+    height: 340px;
+    width: 340px;
+    border-radius: 65px;
+    margin-left: 150px;
+    margin-top: 60px;
+
+    /*box-shadow: 0 0 30px rgba(200, 200, 200, 0.5);*/
+}
+
+.profile_name{
+    position: absolute;
+    top: 20px;
+    left: 550px;
+    font-size: 70px;
+    color: rgb(222, 222, 222);
+}
+
+.profile_email{
+    font-family: 'Manrope', sans-serif;
+
+    position: absolute;
+    top: 125px;
+    left: 555px;
+    font-size: 25px;
+    color: rgba(222, 222, 222, 0.5);
+}
+
+body {
+  margin: 0;
+}
+
+#perspective {
+    height: 300px;
+    width: 200px;
+    margin-left: 200px;
+    margin-top: 100px;
+}
+
+#perspective {
+  perspective: 1000px;
+  /* center object */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#object {
+    -webkit-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+    /* optional */
+    background: #bbb;
+    padding: 20px;
+    /* example content */
+    font: bold 20vw sans-serif;
+
+}

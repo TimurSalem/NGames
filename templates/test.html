@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nav</title>
+    <link rel="stylesheet" href='/static/home.css'/>
+
+
+</head>
+<body>
+    <div id="perspective">
+      <div id="object">3D</div>
+        <div class="shine"></div>
+
+    </div>
+
+    <script>
+        document.getElementById('perspective').addEventListener('mouseenter', function() {
+          document.getElementById('object').style.transition = 'transform 0.6s ease';
+        });
+
+        document.getElementById('perspective').addEventListener('mousemove', function(e) {
+            var w = window.innerWidth / 2;
+            var h = window.innerHeight / 2;
+            var x = (e.pageX - w) / 10;
+            var y = (e.pageY - h) / 10;
+
+            document.getElementById('object').style.transform = 'rotateX(' + -y + 'deg) rotateY(' + x + 'deg)';
+            document.getElementById('object').style.transition = 'transform 0.01s ease-in-out';
+            setTimeout(function() {
+                document.getElementById('object').style.transition = 'transform 0.01s ease';
+            }, 400);
+        });
+
+        document.getElementById('perspective').addEventListener('mouseleave', function() {
+          document.getElementById('object').style.transform = 'rotateX(0deg) rotateY(0deg)';
+          document.getElementById('object').style.transition = 'transform 0.4s ease';
+        });
+    </script>
+
+</body>
+</html>
