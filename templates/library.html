@@ -1,34 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>NGames -- Библиотека</title>
-    <link rel="stylesheet" href='/static/home.css'/>
+{% extends "home.html" %}
 
-</head>
-<body>
-    <div class="choose">
-
-<!--        <img src="/static/images/ngames_logo.png" id="logo"/>-->
-
-
-        <div class="glav">
-            <a  href="/" class="groups"> Главная </a>
-        </div>
-        <div class="bibl">
-            <a class="groups"> Библиотека </a>
-        </div>
-
-    </div>
-
+{% block content %}
     {% if current_user.is_authenticated %}
-        <a href="/register" class="avatar"><img src="{{ current_user.profile_image }}" class="avatar_image"></a>
-    {% else %}
 
-        <a href="/register"><img src="/static/images/avatar_icon.com.png" alt="Профиль" class="stndart_avatar"></a>
-    {% endif %}
+    <h1 class="library_title">Ваши игры</h1>
 
-    <div class="row">
+    <div class="row row_library">
         {% for game in games %}
             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
                 <a href="{{ game[8] }}"><img src="{{ game[1] }}" alt="{{ game[0] }}" class="game_preview"></a>
@@ -36,5 +13,9 @@
             </div>
         {% endfor %}
     </div>
-</body>
-</html>
+
+    {% else %}
+        <h1 class="library_noreg">Зарегистрируйтесь чтобы купить игру</h1>
+    {% endif %}
+
+{% endblock %}

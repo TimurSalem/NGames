@@ -2,8 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
 
+@font-face {
+    font-family: "Glodok";
+    src: url("/static/fonts/Tan Type Co - Glodok-Display.otf") format("woff2"),
+    url("/static/fonts/Tan Type Co - Glodok-Display.otf") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-    background-color: rgb(30, 30, 30)
+    background-color: rgb(26, 26, 26)
 }
 
 h1 {
@@ -12,24 +25,33 @@ h1 {
     font-size: 25px;
 }
 
+.library_noreg{
+    margin-left: 300px;
+    margin-top: 150px;
+}
+
 p {
     color: rgb(180, 180, 180);
     font-family: 'Roboto', sans-serif;
     width: 100%;
     position: relative;
-    left: 25%;
+    left: 20%;
     font-size: 20px;
+    top: -60px;
+
 
 }
 
-.registrate_button {
-    /*background: rgb(100, 100, 200);*/
-    text-align: center;
-    width: 50%;
+.reg_button {
+    position: relative;
+    left: -4%;
+    top: -60px;
 }
 
-.registrate_lable {
-    text-align: center;
+.reg_label {
+    position: relative;
+    left: -4%;
+    top: -60px;
 }
 
 a {
@@ -57,7 +79,7 @@ input {
 
 .search {
     color: rgb(200, 200, 200);
-    background: rgba(55, 55, 55, 0.58);
+    background: rgba(55, 55, 55, 0.5);
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
     width: 50%;
@@ -77,12 +99,10 @@ input {
     padding-left: 45px;
     padding-right: 12px;
 
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 
     position: fixed;
-
-
 }
 
 #search_icon {
@@ -91,11 +111,10 @@ input {
     width: 22px;
     height: 22px;
     position: fixed;
-
 }
 
 .choose {
-    background: rgb(38, 38, 38);
+    background: rgb(34, 34, 34);
 
     border: 1px solid rgba(150, 150, 150, 0.25);
 
@@ -108,8 +127,35 @@ input {
     display: block;
     font-size: 20px;
 
+}
 
+.cutout{
+    position: absolute;
+    background: rgb(34, 34, 34);
+    left: 10px;
+    top: 220px;
+    box-shadow: 1px 1px 0 rgba(150, 150, 150, 0.3) inset, -1px -1px 0 rgba(150, 150, 150, 0.3) inset;
 
+    height: 50px;
+    width: 180px;
+    border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+
+.cutout_2{
+    position: absolute;
+    background: rgb(34, 34, 34);
+    left: 10px;
+    top: 160px;
+    height: 50px;
+    width: 180px;
+    box-shadow: 1px 1px 0 rgba(150, 150, 150, 0.3) inset, -1px -1px 0 rgba(150, 150, 150, 0.3) inset;
+
+    border-radius: 5px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 .groups {
@@ -123,7 +169,7 @@ input {
 .bibl {
     position: absolute;
     left: 10px;
-    top: 100px;
+    top: 220px;
     height: 50px;
     width: 180px;
     border-radius: 5px;
@@ -136,7 +182,7 @@ input {
     position: absolute;
 
     left: 10px;
-    top: 50px;
+    top: 160px;
     height: 50px;
     width: 180px;
 
@@ -144,7 +190,6 @@ input {
 
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-
 }
 
 .bibl:hover {
@@ -153,6 +198,59 @@ input {
 
 .glav:hover {
     background: rgb(50, 50, 50);
+}
+
+#logo{
+    height: 120px;
+    width: 120px;
+    margin-left: 10px;
+    margin-top: 10px;
+    -webkit-filter: drop-shadow(0px 0px 15px #000);
+    filter: drop-shadow(0px 0px 15px #000);
+}
+
+.A{
+    color: rgb(222, 222, 222);
+    font-family: Glodok, sans-serif;
+    font-size: 40px;
+
+    height: 120px;
+    width: 120px;
+    margin-left: 145px;
+    margin-top: -113px;
+    -webkit-filter: drop-shadow(0px 0px 10px #000);
+    filter: drop-shadow(0px 0px 10px #000);
+}
+
+.dot{
+    color: rgb(222, 222, 222);
+
+    font-family: Glodok, sans-serif;
+
+    font-size: 20px;
+
+    height: 120px;
+    width: 120px;
+    margin-left: 158px;
+    margin-top: -110px;
+    -webkit-filter: drop-shadow(0px 0px 10px #000);
+    filter: drop-shadow(0px 0px 10px #000);
+}
+
+.G{
+    color: rgb(222, 222, 222);
+
+    font-family: Glodok, sans-serif;
+
+    font-size: 40px;
+
+    height: 120px;
+    width: 120px;
+    margin-left: 145px;
+    margin-top: -110px;
+
+        -webkit-filter: drop-shadow(0px 0px 10px #000);
+    filter: drop-shadow(0px 0px 10px #000);
 }
 
 .stndart_avatar {
@@ -166,7 +264,7 @@ input {
 .avatar{
     position: fixed;
     right: 20px;
-    top: 25px;
+    top: 20px;
     height: 48px;
     width: 48px;
 }
@@ -183,15 +281,20 @@ input {
 }
 
 .game_preview {
+    font-family: 'Roboto', sans-serif;
+
     width: 230px;
     height: 345px;
     border-radius: 16px;
+    color: rgb(222, 222, 222);
 
     -webkit-transition: all 0.6s ease;
     transition: all 0.6s ease;
 }
 
 .game_preview:hover {
+    font-family: 'Roboto', sans-serif;
+
     width: 253px;
     height: 380px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
@@ -217,7 +320,7 @@ input {
 .fon {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 70px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -233,8 +336,8 @@ input {
 
 .fullpreview {
 
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 65%;
+    max-height: 65%;
     -width: auto;
     height: auto;
     border-radius: 10px;
@@ -243,6 +346,7 @@ input {
     display: block;
 
     box-shadow: 0 5px 40px rgba(0, 0, 0, 0.7);
+    margin-left: 10px;
 
 
 
@@ -257,7 +361,7 @@ input {
     background: rgba(55, 55, 55, 0.5);
     font-family: 'Roboto', sans-serif;
     border-radius: 16px;
-    width: 300px;
+    width: 240px;
     height: 97vh;
     border: 1px solid rgba(150, 150, 150, 0.3);
     outline: none;
@@ -273,13 +377,10 @@ input {
     backdrop-filter: blur(10px);
 
     position: absolute;
-
-
-
 }
 
 .left_game_content{
-    margin-left: 45px;
+    margin-left: 265px;
 }
 
 .vign {
@@ -300,13 +401,11 @@ input {
     z-index: -1; /* устанавливаем поверх изображения */
 
 }
-
 .game_page{
 
     overflow-x: hidden;
 
 }
-
 .game_title {
     font-family: 'Roboto', sans-serif;
 
@@ -316,9 +415,28 @@ input {
     margin-left: -10px;
 
 }
-
 .game_price{
     background: #328cff;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 20px;
+    color: rgb(222, 222, 222);
+    border: None;
+
+    /* Добавляем следующие свойства */
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    transform: translate(-50%, -50%);
+
+}
+
+.game_download{
+    background: #51ba36;
     border-radius: 10px;
     width: 200px;
     height: 40px;
@@ -343,11 +461,12 @@ input {
     color: rgba(200, 200, 200, 0.1);
     background: rgba(55, 55, 55, 0.7);
     border-radius: 16px;
-    width: 740px;
+    width: 700px;
     border: 1px solid rgba(150, 150, 150, 0.3);
     outline: none;
     font-size: 1px;
     margin-top: 30px;
+    margin-left: 215px;
     padding-top: 10px;
     box-shadow: 0 0 5px rgba(200, 200, 200, 0.05);
 
@@ -410,15 +529,14 @@ input {
     font-size: 38px;
 }
 
-.btn{
+.reg_btn{
+    position: absolute;
     font-family: 'Roboto', sans-serif;
-    margin: 0 auto;
     font-size: 20px;
     width: 20%;
     height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    left: 36%;
+    margin-top: -50px;
     border-radius: 8px;
     border: None;
     background: #328cff;
@@ -481,13 +599,32 @@ input {
 }
 
 .reg-log_link a{
+    position: absolute;
+
+    font-size: 20px;
+
     opacity: 0.8;
     color: #328cff;
-    padding-left: 15px;
-    padding-right: 15px;
+
+    bottom: 125px;
+
+}
+
+.log{
+    left: 41.5%;
+}
+
+.reg{
+    left: 46.5%;
+}
+
+.register_page{
+    overflow: hidden;
 }
 
 .main_link{
+    font-size: 20px;
+
     position: absolute;
     left: 15px;
     top: 15px;
@@ -598,22 +735,13 @@ h2{
 /*    }*/
 /*}*/
 
-.profile_avatar{
-    height: 340px;
-    width: 340px;
-    border-radius: 65px;
-    margin-left: 150px;
-    margin-top: 60px;
-
-    /*box-shadow: 0 0 30px rgba(200, 200, 200, 0.5);*/
-}
-
 .profile_name{
     position: absolute;
     top: 20px;
-    left: 550px;
+    left: 740px;
     font-size: 70px;
-    color: rgb(222, 222, 222);
+    color: rgba(222, 222, 222, 1);
+
 }
 
 .profile_email{
@@ -621,20 +749,46 @@ h2{
 
     position: absolute;
     top: 125px;
-    left: 555px;
+    left: 745px;
     font-size: 25px;
     color: rgba(222, 222, 222, 0.5);
+}
+
+.row_search{
+    margin-top: 40px;
+}
+
+.logout_link{
+    color: rgb(200, 200, 200);
+    position: absolute;
+    top: 430px;
+    left: 475px;
+    font-size: 25px;
 }
 
 body {
   margin: 0;
 }
 
+
+.profile_avatar{
+    height: 340px;
+    width: 340px;
+    border-radius: 65px;
+    margin-top: 60px;
+    border: 2px solid rgba(180, 180, 180, 0.6);
+
+
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.7);
+}
+
 #perspective {
-    height: 300px;
-    width: 200px;
-    margin-left: 200px;
-    margin-top: 100px;
+    height: 340px;
+    width: 340px;
+    border-radius: 65px;
+    margin-left: 350px;
+    margin-top: 30px;
+
 }
 
 #perspective {
@@ -648,10 +802,87 @@ body {
 #object {
     -webkit-transition: all 0.45s ease;
     transition: all 0.45s ease;
-    /* optional */
-    background: #bbb;
-    padding: 20px;
-    /* example content */
-    font: bold 20vw sans-serif;
+}
 
+
+
+canvas {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+main {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 3;
+    width: 100%;
+
+    font-size: 32px;
+    color: #fff;
+
+    padding: 5vw;
+
+    display: flex;
+    flex-direction: column;
+}
+main section {
+    width: 50%;
+    padding: 100px 0px;
+    height: 100vh;
+}
+
+main section p {
+    padding: 5%;
+    background: rgba(0,0,0,0.6);
+}
+main section:nth-child(2) { margin-left: 50%; }
+main section:nth-child(4) { margin-left: 50%; }
+
+.dispersion {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background-color: black;
+  overflow: hidden;
+}
+
+.dispersion::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #fff 20%, transparent 40%);
+  mix-blend-mode: screen;
+  animation: dispersion 1s ease-out forwards;
+}
+
+@keyframes dispersion {
+  to {
+    top: 120%;
+    left: 120%;
+    width: 10%;
+    height: 10%;
+  }
+}
+
+.library_nothing{
+    font-size: 50px;
+    position: absolute;
+    left: 320px;
+}
+
+.library_title{
+    font-size: 55px;
+    margin-left: 270px;
+    margin-top: 105px;
+    padding: -50px;
+}
+
+.row_library{
+    padding-top: -1000px;
+    margin-top: 15px;
 }

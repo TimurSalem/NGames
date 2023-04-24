@@ -19,8 +19,10 @@ app = Flask(__name__)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+file_path = os.path.abspath(os.getcwd()) + "/db/NGames.db"
+print(file_path)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/timursalem/PycharmProjects/NGame/db/NGames.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + file_path
 app.config['UPLOADED_AVATARS_DEST'] = 'static/images/avatars'
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
@@ -46,22 +48,43 @@ class Game(db.Model):
     platforms = db.Column(db.String(50))
 
 
-def generate_single_game_html(game):
-    return render_template("games_html/basic_game.html", game=game)
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    return db_sess.query(User).get(user_id)
 
 
-def generate_game_html():
+def generate_single_game_html(game, user):
+    conn = sqlite3.connect('db/users.db')
+    cursor = conn.cursor()
+
+    if user:
+        cursor.execute("SELECT library FROM users WHERE id = ?", (user.id,))
+
+        try:
+            games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
+        except:
+            games = []
+
+        games_name = list(map(lambda x: x[0], games))
+
+        user_has_game = game.name in games_name
+    else:
+        user_has_game = False
+
+    return render_template("games_html/basic_game.html", game=game, user_has_game=user_has_game)
+
+
+def generate_game_html(user):
     with app.app_context():
         games = Game.query.all()
 
         for game in games:
-            html = generate_single_game_html(game)
+            html = generate_single_game_html(game, user)
 
             with open(f"templates/games_html/{game.name.lower().replace(' ', '_')}.html", "w") as f:
                 f.write(html)
 
-
-generate_game_html()
 
 with app.app_context():
     games = Game.query.all()
@@ -75,21 +98,20 @@ with app.app_context():
 @app.route('/')
 def home():
     games = Game.query.all()
+    if current_user.is_authenticated:
+        generate_game_html(current_user)
+    else:
+        generate_game_html(None)
+
 
     return render_template("home.html", games=games)
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)
 
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     query = request.args.get('q')
     print(query)
-    conn = sqlite3.connect('NGames.db')
+    conn = sqlite3.connect('db/NGames.db')
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM games WHERE name LIKE ?", ('%' + query + '%',))
     games = [game for game in cursor.fetchall()]
@@ -143,6 +165,13 @@ def reqister():
         return render_template('register.html', title='Регистрация', form=form)
 
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/")
+
+
 @app.route('/buy')
 def buy():
     arg = request.args.get('game')
@@ -172,7 +201,6 @@ def transaction_processing():
     cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
     try:
         purchased_games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
-
     except:
         purchased_games = []
     print('до', purchased_games)
@@ -196,30 +224,34 @@ def transaction_processing():
 
 @app.route('/library')
 def library():
-    conn = sqlite3.connect('db/users.db')
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
-
     try:
-        games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
-    except:
-        games = []
+        conn = sqlite3.connect('db/users.db')
+        cursor = conn.cursor()
 
-    print('library', games)
+        cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
 
-    # Применение изменений
-    conn.commit()
+        try:
+            games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
+        except:
+            games = []
 
-    # Закрытие соединения
-    conn.close()
+        print('library', games)
 
-    return render_template('library.html', title='Библиотека', games=games)
+        # Применение изменений
+        conn.commit()
+
+        # Закрытие соединения
+        conn.close()
+
+        return render_template('library.html', title='Библиотека', games=games)
+    except AttributeError:
+        return render_template('library.html', title='Библиотека', games=None)
 
 
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
+
 
 @app.route('/test')
 def test():
@@ -228,4 +260,4 @@ def test():
 
 if __name__ == '__main__':
     db_session.global_init("db/users.db")
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=10000, debug=True)

@@ -7,6 +7,25 @@
 
 </head>
 <body class="game_page">
+
+    <div class="choose">
+
+        <div class="cutout"></div>
+        <div class="cutout_2"></div>
+
+        <img src="/static/images/logo.png" id="logo"/>
+        <h1 class="A">A</h1>
+        <h1 class="dot">.</h1>
+        <h1 class="G">G</h1>
+
+        <div class="glav">
+            <a  href="/" class="groups"> Главная </a>
+        </div>
+        <div class="bibl">
+            <a href="/library" class="groups"> Библиотека </a>
+        </div>
+
+    </div>
     <div class="left_game_content">
 
         <h1 class="game_title"> {{game.name}} </h1>
@@ -19,7 +38,17 @@
         <h2 class="age_limit">{{game.age_limit}}</h2>
 
 
-        <button type="button" class="game_price" onclick="window.location.href='/buy?game={{game.id}}'"> {{game.price}} </button>
+        {% if not user_has_game %}
+            <button type="button" class="game_price" onclick="window.location.href='/buy?game={{game.id}}'"> {{game.price}} </button>
+        {% else %}
+        <a href="#" download="virus.txt">
+
+            <button type="button" class="game_download"> Скачать </button>
+
+        </a>
+
+        {% endif %}
+
 
 
         <h3 class="des_light">Дата выхода</h3>
@@ -30,6 +59,8 @@
     <div class="description">
         <h2 class="description_text">{{game.description}}</h2>
     </div>
+
+
 
 
 </body>

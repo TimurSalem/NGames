@@ -4,13 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href='/static/home.css'/>
+<!--    <link rel="stylesheet"-->
+<!--      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
+<!--      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"-->
+<!--      crossorigin="anonymous">-->
 
     <title>NGame</title>
 </head>
 <body class="register_page">
 <header>
-    <nav class="navbar navbar-light bg-light">
-<!--        <a class="navbar-brand" href="#">Наше приложение</a> logo here-->
+    <nav>
         {% if current_user.is_authenticated %}
             <a href="/register" class="avatar"><img src="{{ current_user.profile_image }}" class="avatar_image"></a>
         {% else %}
@@ -21,11 +24,11 @@
     </nav>
 </header>
 <!-- Begin page content -->
-<main role="main" class="container">
+<main role="main">
     {% block content %}{% endblock %}
     <div class="reg-log_link">
-        <a href="/login">Log in</a>
-        <a href="/register">Sign up</a>
+        <a href="/login" class="log">Log in</a>
+        <a href="/register" class="reg">Sign up</a>
 
     </div>
 

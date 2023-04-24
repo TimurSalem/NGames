@@ -7,8 +7,61 @@
 
 </head>
 <body>
-    <img src="{{current_user.profile_image}}" class="profile_avatar">
+
+    <a href="/logout" class="logout_link">Выйти</a>
+
+
+    <div class="choose">
+
+        <div class="cutout"></div>
+        <div class="cutout_2"></div>
+
+        <img src="/static/images/logo.png" id="logo"/>
+        <h1 class="A">A</h1>
+        <h1 class="dot">.</h1>
+        <h1 class="G">G</h1>
+
+        <div class="glav">
+            <a  href="/" class="groups"> Главная </a>
+        </div>
+        <div class="bibl">
+            <a href="/library" class="groups"> Библиотека </a>
+        </div>
+
+    </div>
+    <div id="perspective">
+      <img src={{current_user.profile_image}} id="object" class="profile_avatar">
+    </div>
+
     <h1 class="profile_name">{{current_user.name}}</h1>
     <h1 class="profile_email">{{current_user.email}}</h1>
+
+    <script>
+        document.getElementById('perspective').addEventListener('mouseenter', function() {
+          document.getElementById('object').style.transition = 'transform 0.1s ease';
+        });
+
+        document.getElementById('perspective').addEventListener('mousemove', function(e) {
+            var w = window.innerWidth / 2;
+            var h = window.innerHeight / 2;
+            var element = document.getElementById('object');
+
+            // Получение прямоугольника, описывающего позицию и размер элемента
+            var rect = element.getBoundingClientRect();
+            var x = (e.pageX - (rect.left + rect.width / 2)) / 10;
+            var y = (e.pageY - (rect.top + rect.height / 2)) / 10;
+
+            document.getElementById('object').style.transform = 'rotateX(' + -y + 'deg) rotateY(' + x + 'deg)';
+            document.getElementById('object').style.transition = 'transform 0.01s ease';
+
+        });
+
+        document.getElementById('perspective').addEventListener('mouseleave', function() {
+          document.getElementById('object').style.transition = 'transform 0.4s ease';
+
+          document.getElementById('object').style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
+
 </body>
 </html>
