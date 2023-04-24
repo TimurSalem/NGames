@@ -103,7 +103,6 @@ def home():
     else:
         generate_game_html(None)
 
-
     return render_template("home.html", games=games)
 
 
@@ -251,6 +250,11 @@ def library():
 @app.route('/profile')
 def profile():
     return render_template('profile.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/test')
