@@ -197,28 +197,27 @@ def transaction_processing():
     conn = sqlite3.connect('db/users.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
-    try:
-        purchased_games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
-    except:
-        purchased_games = []
-    print('до', purchased_games)
-    purchased_games.append(game)
-    print('после', purchased_games)
+    if current_user.is_authenticated:
+        cursor.execute("SELECT library FROM users WHERE id = ?", (current_user.id,))
+        try:
+            purchased_games = list(map(lambda x: pickle.loads(x[0]), cursor.fetchall()))[0]
+        except:
+            purchased_games = []
+        print('до', purchased_games)
+        purchased_games.append(game)
+        print('после', purchased_games)
 
-    purchased_games = pickle.dumps(purchased_games)
-    # Выполнение SQL-запроса для изменения значения поля library
-    cursor.execute("UPDATE users SET library = ? WHERE id = ?", (purchased_games, current_user.id))
+        purchased_games = pickle.dumps(purchased_games)
+        # Выполнение SQL-запроса для изменения значения поля library
+        cursor.execute("UPDATE users SET library = ? WHERE id = ?", (purchased_games, current_user.id))
 
-    # Применение изменений
-    conn.commit()
+        # Применение изменений
+        conn.commit()
 
-    # Закрытие соединения
-    conn.close()
+        # Закрытие соединения
+        conn.close()
 
     return redirect('/')
-
-    return "success"
 
 
 @app.route('/library')
@@ -264,4 +263,4 @@ def test():
 
 if __name__ == '__main__':
     db_session.global_init("db/users.db")
-    app.run(host='0.0.0.0', port=10000, debug=True)
+    app.run(host='0.0.0.0', port=15000, debug=True)
