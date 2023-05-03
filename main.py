@@ -82,7 +82,7 @@ def generate_game_html(user):
         for game in games:
             html = generate_single_game_html(game, user)
 
-            with open(f"templates/games_html/{game.name.lower().replace(' ', '_')}.html", "w") as f:
+            with open(f"templates/games_html/{game.name.lower().replace(' ', '_')}.html", "w", encoding='utf-8') as f:
                 f.write(html)
 
 
